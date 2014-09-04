@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="store">
+<head>
+	<meta charset="UTF-8">
+	<title>Store 2 - the sequel</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/factories.js"></script>
+	<script type="text/javascript" src="js/controllers.js"></script>
+</head>
+<body>
+	<a href="#/">Customers</a> | <a href="#/alt">Orders</a>
+	<div ng-view="view-animate">
+	</div>
+</body>
+</html>
