@@ -1,16 +1,16 @@
 var mongoose = require('mongoose')
-var Customer = mongoose.model('Customer');
+var Order = mongoose.model('Order');
 module.exports = {
  index: function(req, res){
   res.render('index', {title:'Welcome Page'});
  },
  index_json: function(req, res){ 
-  Customer.find({}, function(err, results){
+  Order.find({}, function(err, results){
    res.send(JSON.stringify(results));
   });
  },
  create: function(req, res){
-  var a = new Customer(req.body);
+  var a = new Order(req.body);
   a.save(function(err){
    if(err){
     res.send(JSON.stringify(err));

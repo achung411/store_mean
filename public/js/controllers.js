@@ -1,5 +1,8 @@
 store.controller('Customers', function($scope, StoreFactory) {
-	$scope.customers = StoreFactory.getCustomers();
+	StoreFactory.getCustomers(function(data) {
+		$scope.customers = data;
+	});
+
 	$scope.addCustomer = function() {
 		StoreFactory.addNewCustomer($scope.customer);
 	};
@@ -9,8 +12,15 @@ store.controller('Customers', function($scope, StoreFactory) {
 });
 
 store.controller('Orders', function($scope, StoreFactory) {
-	$scope.customers = StoreFactory.getCustomers();
-	$scope.orders = StoreFactory.getOrders();
+	StoreFactory.getCustomers(function(data) {
+		$scope.customers = data;
+	});
+
+	StoreFactory.getOrders(function(data) {
+		$scope.orders = data;
+	});
+
+	// $scope.orders = StoreFactory.getOrders();
 	$scope.addOrder = function() {
 		StoreFactory.addOrder($scope.order);
 	};
