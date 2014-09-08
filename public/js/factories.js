@@ -1,15 +1,6 @@
 store.factory('StoreFactory', function($http) {
-	// var customers = [
-	// 	{name: 'India Meisner', created_at: new Date(2014, 2, 15)}
-	// 	];
-
 	var customers = [];
 	var orders = [];
-
-	// var orders = [
-	// 	{customer: 'India Meisner', product: 'Black Belts', quantity: 5, created_at: new Date(2012, 1, 2)}
-	// 	];
-
 	var factory = {};
 
 	factory.getCustomers = function(callback) {
@@ -27,14 +18,18 @@ store.factory('StoreFactory', function($http) {
 		});
 	};
 
-	factory.removeCustomer = function(individual) {
-		var index;
-		for (var i=0; i<customers.length; i++) {
-			if (customers[i].name === individual.name) {
-				index = i;
+	factory.removeCustomer = function(id) {
+		var target = id;
+		var packet = {id: target, _method: "delete"};
+		$http.post('/customers/' + target, packet).success(function() {
+			var index;
+			for (var i=0; i<customers.length; i++) {
+				if (customers[i]._id === target) {
+					index = i;
+				}
 			}
-		}
-		customers.splice(index, 1);
+			customers.splice(index, 1);
+		});
 	};
 
 	factory.getOrders = function(callback) {
@@ -53,13 +48,5 @@ store.factory('StoreFactory', function($http) {
 		});
 	};
 
-
-	// 	orders.push({
-	// 		customer: info.customer.name,
-	// 		product: info.product,
-	// 		quantity: info.quantity,
-	// 		created_at: new Date()
-	// 	});
-	// };
 	return factory;
 });

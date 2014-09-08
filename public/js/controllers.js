@@ -7,7 +7,7 @@ store.controller('Customers', function($scope, StoreFactory) {
 		StoreFactory.addNewCustomer($scope.customer);
 	};
 	$scope.removeCustomer = function(individual) {
-		StoreFactory.removeCustomer(individual);
+		StoreFactory.removeCustomer(individual._id);
 	};
 });
 
@@ -20,7 +20,6 @@ store.controller('Orders', function($scope, StoreFactory) {
 		$scope.orders = data;
 	});
 
-	// $scope.orders = StoreFactory.getOrders();
 	$scope.addOrder = function() {
 		StoreFactory.addOrder($scope.order);
 	};
